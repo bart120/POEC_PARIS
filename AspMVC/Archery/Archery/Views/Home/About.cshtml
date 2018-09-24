@@ -1,0 +1,25 @@
+﻿@model Archery.Models.Info
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>About</title>
+</head>
+<body>
+
+    <div> 
+        <h1>A propos de</h1>
+
+        <p>Dev: @Model.DevName</p>
+        <p>&copy; @Model.CreatedDate</p>
+        <p>Contact: @Model.ContactMail</p>
+
+    </div>
+</body>
+</html>

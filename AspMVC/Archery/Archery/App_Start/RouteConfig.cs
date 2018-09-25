@@ -21,7 +21,7 @@ namespace Archery
 
             routes.MapRoute(
                 name: "AboutRoute",
-                url: "a-propos",
+                url: "a-propos-de",
                 defaults: new { controller = "Home", action = "About" }
             );
 

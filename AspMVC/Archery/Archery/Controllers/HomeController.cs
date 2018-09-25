@@ -12,7 +12,7 @@ namespace Archery.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            
+            ViewData["Title"] = "Accueil";
             return View();
         }
 

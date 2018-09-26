@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Archery.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,6 +11,12 @@ namespace Archery.Controllers
     {
         // GET: Players
         public ActionResult Subscribe()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Subscribe(Archer archer)
         {
             return View();
         }

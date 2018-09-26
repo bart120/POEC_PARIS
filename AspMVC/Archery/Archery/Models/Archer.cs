@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Archery.Models
 {
-    public class Player : User
+    public class Archer : User
     {
         public string LicenseNumber { get; set; }
     }

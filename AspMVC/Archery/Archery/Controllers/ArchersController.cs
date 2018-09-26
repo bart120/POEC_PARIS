@@ -18,6 +18,13 @@ namespace Archery.Controllers
         [HttpPost]
         public ActionResult Subscribe(Archer archer)
         {
+            if (ModelState.IsValid)
+            {
+                //...
+            }
+
+            
+
             return View();
         }
     }

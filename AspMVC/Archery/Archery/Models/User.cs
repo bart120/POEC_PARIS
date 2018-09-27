@@ -11,8 +11,8 @@ namespace Archery.Models
     {
         public int ID { get; set; }
 
-        [Required (ErrorMessage = "Le champ {0} est obligatoire.")]
-        [StringLength (150, ErrorMessage = "Le champ {0} doit contenir {1} caractères max.")]
+        [Required(ErrorMessage = "Le champ {0} est obligatoire.")]
+        [StringLength(150, ErrorMessage = "Le champ {0} doit contenir {1} caractères max.")]
         [Display(Name = "Adresse mail")]
         [RegularExpression(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}" +
                            @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +

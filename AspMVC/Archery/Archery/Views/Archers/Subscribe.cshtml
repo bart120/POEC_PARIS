@@ -1,35 +1,37 @@
 ﻿@model Archery.Models.Archer
 @{
+    Layout = "~/Views/Shared/_LayoutForm.cshtml";
     ViewBag.Title = "Inscription";
 }
-
-<h2>Nouveau tireur</h2>
+@section SectionTitle{
+    Nouvel archer
+}
 
 @*<form role="form" method="post">*@
 @using (Html.BeginForm())
 {
-    
+
     @*@Html.ValidationSummary(null, new { @class = "alert alert-danger" })*@
-    
 
-<div class="form-group">
-    @*<label class="control-label" for="Mail">Email address</label>*@
-    @*<input type="email" name="email" class="form-control" id="exampleInputEmail" placeholder="Enter email">*@
-    @Html.LabelFor(x => x.LastName, new { @class = "control-label" })
-    @Html.EditorFor(x => x.LastName, new { htmlAttributes = new { @class = "form-control" } })
-    @Html.ValidationMessageFor(x => x.LastName, null, new { @class = "text-danger" })
-</div>
 
-<div class="form-group">
-    @Html.LabelFor(x => x.FirstName, new { @class = "control-label" })
-    @Html.EditorFor(x => x.FirstName, new { htmlAttributes = new { @class = "form-control" } })
-    @Html.ValidationMessageFor(x => x.FirstName, null, new { @class = "text-danger" })
-</div>
+    <div class="form-group">
+        @*<label class="control-label" for="Mail">Email address</label>*@
+        @*<input type="email" name="email" class="form-control" id="exampleInputEmail" placeholder="Enter email">*@
+        @Html.LabelFor(x => x.LastName, new { @class = "control-label" })
+        @Html.EditorFor(x => x.LastName, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(x => x.LastName, null, new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.FirstName, new { @class = "control-label" })
+        @Html.EditorFor(x => x.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(x => x.FirstName, null, new { @class = "text-danger" })
+    </div>
 
     <div class="form-group">
         @Html.LabelFor(x => x.Mail, new { @class = "control-label" })
         @Html.EditorFor(x => x.Mail, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(x => x.Mail, null, new { @class="text-danger" })
+        @Html.ValidationMessageFor(x => x.Mail, null, new { @class = "text-danger" })
     </div>
 
     <div class="form-group">
@@ -48,7 +50,7 @@
         @Html.LabelFor(x => x.BirthDate, new { @class = "control-label" })
         @Html.EditorFor(x => x.BirthDate, new { htmlAttributes = new { @class = "form-control" } })
         @Html.ValidationMessageFor(x => x.BirthDate, null, new { @class = "text-danger" })
-        
+
     </div>
 
     <div class="form-group">
@@ -62,4 +64,8 @@
     <button type="submit" class="btn btn-default">OK</button>
 }
 
-
+@section SectionScripts{
+    <script>
+        var d = $("div");
+    </script>
+}

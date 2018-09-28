@@ -10,7 +10,7 @@ namespace Archery.Controllers
 {
     public class ArchersController : BaseController
     {
-        private ArcheryDbContext db = new ArcheryDbContext();
+
 
         // GET: Players
         public ActionResult Subscribe()
@@ -19,7 +19,8 @@ namespace Archery.Controllers
         }
 
         [HttpPost]
-        public ActionResult Subscribe(Archer archer)
+        [ValidateAntiForgeryToken]
+        public ActionResult Subscribe([Bind(Exclude = "ID")]Archer archer)
         {
             /*if(DateTime.Now.AddYears(-9) <= archer.BirthDate)
             {
@@ -31,23 +32,17 @@ namespace Archery.Controllers
             if (ModelState.IsValid)
             {
                 db.Archers.Add(archer);
-                //db.SaveChanges();
+                db.SaveChanges();
 
                 //TempData["Message"] = "Archer enregistré";
                 Display("Archer enregistré");
-                
-                
+
+
                 return RedirectToAction("index", "home");
-            }           
+            }
 
             return View();
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            base.Dispose(disposing);
-            if(!disposing)
-                this.db.Dispose();
-        }
     }
 }

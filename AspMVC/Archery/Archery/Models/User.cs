@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -25,25 +26,30 @@ namespace Archery.Models
         [Required(ErrorMessage = "Le champ {0} est obligatoire.")]
         [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{6,}$",
             ErrorMessage = "{0} incorrect.")]
+        [StringLength(150)]
         public string Password { get; set; }
 
         [Display(Name = "Confirmation du mot de passe")]
         [DataType(DataType.Password)]
         [Compare("Password", ErrorMessage = "La confirmation n'est pas bonne.")]
+        [NotMapped]
         public string ConfirmedPassword { get; set; }
 
         [Display(Name = "Nom")]
         [Required(ErrorMessage = "Le champ {0} est obligatoire.")]
+        [StringLength(50)]
         public string LastName { get; set; }
 
         [Display(Name = "Prénom")]
         [Required(ErrorMessage = "Le champ {0} est obligatoire.")]
+        [StringLength(50)]
         public string FirstName { get; set; }
 
         [Display(Name = "Date de naissance")]
         [Required(ErrorMessage = "Le champ {0} est obligatoire.")]
         [DataType(DataType.Date)]
         [Age(9, MaximumAge = 90, ErrorMessage = "Pour le champ {0}, vous devez avoir plus de {1} ans")]
+        [Column(TypeName = "datetime2")]
         public DateTime BirthDate { get; set; }
 
     }

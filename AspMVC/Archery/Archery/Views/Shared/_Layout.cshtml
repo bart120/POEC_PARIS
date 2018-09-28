@@ -1,4 +1,8 @@
-﻿
+﻿@{ 
+    var message = TempData["MESSAGE"] as Archery.Tools.Message;
+
+
+}
 <!DOCTYPE html>
 
 <html>
@@ -68,7 +72,13 @@
     </nav>
 
     <div class="container">
-        
+        @if (message != null)
+        {
+        <div class="alert 
+             alert-@(message.MessageType == Archery.Tools.MessageType.SUCCESS ? "success" : "danger")">
+            @message.Text
+        </div>
+        }
 
         @RenderBody()
 

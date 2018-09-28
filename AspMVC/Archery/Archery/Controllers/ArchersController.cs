@@ -1,4 +1,5 @@
-﻿using Archery.Models;
+﻿using Archery.Data;
+using Archery.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +8,10 @@ using System.Web.Mvc;
 
 namespace Archery.Controllers
 {
-    public class ArchersController : Controller
+    public class ArchersController : BaseController
     {
+        private ArcheryDbContext db = new ArcheryDbContext();
+
         // GET: Players
         public ActionResult Subscribe()
         {
@@ -27,12 +30,24 @@ namespace Archery.Controllers
 
             if (ModelState.IsValid)
             {
-                //...
-            }
+                db.Archers.Add(archer);
+                //db.SaveChanges();
 
-            
+                //TempData["Message"] = "Archer enregistré";
+                Display("Archer enregistré");
+                
+                
+                return RedirectToAction("index", "home");
+            }           
 
             return View();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+            if(!disposing)
+                this.db.Dispose();
         }
     }
 }

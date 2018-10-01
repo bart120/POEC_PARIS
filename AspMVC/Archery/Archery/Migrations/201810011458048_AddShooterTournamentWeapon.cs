@@ -18,9 +18,9 @@ namespace Archery.Migrations
                         Departure = c.DateTime(),
                     })
                 .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.Archers", t => t.ArcherID, cascadeDelete: true)
-                .ForeignKey("dbo.Tournaments", t => t.TournamentID, cascadeDelete: true)
-                .ForeignKey("dbo.Weapons", t => t.WeaponID, cascadeDelete: true)
+                .ForeignKey("dbo.Archers", t => t.ArcherID, cascadeDelete: false)
+                .ForeignKey("dbo.Tournaments", t => t.TournamentID, cascadeDelete: false)
+                .ForeignKey("dbo.Weapons", t => t.WeaponID, cascadeDelete: false)
                 .Index(t => t.TournamentID)
                 .Index(t => t.WeaponID)
                 .Index(t => t.ArcherID);
@@ -55,8 +55,8 @@ namespace Archery.Migrations
                         Tournament_ID = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => new { t.Weapon_ID, t.Tournament_ID })
-                .ForeignKey("dbo.Weapons", t => t.Weapon_ID, cascadeDelete: true)
-                .ForeignKey("dbo.Tournaments", t => t.Tournament_ID, cascadeDelete: true)
+                .ForeignKey("dbo.Weapons", t => t.Weapon_ID, cascadeDelete: false)
+                .ForeignKey("dbo.Tournaments", t => t.Tournament_ID, cascadeDelete: false)
                 .Index(t => t.Weapon_ID)
                 .Index(t => t.Tournament_ID);
             

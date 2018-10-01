@@ -148,6 +148,10 @@
     <Compile Include="Migrations\201810011037488_AddUniqueEmailUser.Designer.cs">
       <DependentUpon>201810011037488_AddUniqueEmailUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810011458048_AddShooterTournamentWeapon.cs" />
+    <Compile Include="Migrations\201810011458048_AddShooterTournamentWeapon.Designer.cs">
+      <DependentUpon>201810011458048_AddShooterTournamentWeapon.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Administrator.cs" />
     <Compile Include="Models\BaseModel.cs" />
@@ -191,6 +195,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810011037488_AddUniqueEmailUser.resx">
       <DependentUpon>201810011037488_AddUniqueEmailUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810011458048_AddShooterTournamentWeapon.resx">
+      <DependentUpon>201810011458048_AddShooterTournamentWeapon.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -10,7 +10,7 @@ namespace Archery.Models
     public class Shooter : BaseModel
     {
         [Required]
-        [Display(Name = "Tournois")]
+        [Display(Name = "Tournoi")]
         public int TournamentID { get; set; }
 
         [ForeignKey("TournamentID")]

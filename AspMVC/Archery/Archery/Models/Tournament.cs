@@ -14,11 +14,13 @@ namespace Archery.Models
         public string Name { get; set; }
 
         [Required]
+        [DataType(DataType.DateTime)]
         [Display(Name = "Début")]
         public DateTime StartDate { get; set; }
 
         [Required]
         [Display(Name = "Fin")]
+        [DataType(DataType.DateTime)]
         public DateTime EndDate { get; set; }
 
         [Required]
@@ -31,7 +33,7 @@ namespace Archery.Models
         [Display(Name = "Armes")]
         public ICollection<Weapon> Weapons { get; set; }
 
-        [Display(Name = "Tireur")]
+        [Display(Name = "Tireurs")]
         public ICollection<Shooter> Shooters { get; set; }
     }
 }

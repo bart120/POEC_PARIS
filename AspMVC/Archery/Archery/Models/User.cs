@@ -19,6 +19,8 @@ namespace Archery.Models
                            @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +
                            @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
             , ErrorMessage = "Le format n'est pas bon.")]
+        [Index(IsUnique = true)]
+        [Email(ErrorMessage = "Le mail existe déjà.")]
         public string Mail { get; set; }
 
         [Display(Name = "Mot de passe")]

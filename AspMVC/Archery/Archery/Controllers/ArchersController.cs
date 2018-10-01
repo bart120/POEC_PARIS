@@ -1,5 +1,6 @@
 ﻿using Archery.Data;
 using Archery.Models;
+using Archery.Tools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,12 +32,16 @@ namespace Archery.Controllers
 
             if (ModelState.IsValid)
             {
+                //archer.Password = Extension.HashMD5(archer.Password);
+                archer.Password = archer.Password.HashMD5();
+
+                db.Configuration.ValidateOnSaveEnabled = false;
                 db.Archers.Add(archer);
                 db.SaveChanges();
 
+                db.Configuration.ValidateOnSaveEnabled = true;
                 //TempData["Message"] = "Archer enregistré";
                 Display("Archer enregistré");
-
 
                 return RedirectToAction("index", "home");
             }

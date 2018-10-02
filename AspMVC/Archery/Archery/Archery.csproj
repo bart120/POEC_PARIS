@@ -168,6 +168,10 @@
     <Compile Include="Migrations\201810020728227_Test.Designer.cs">
       <DependentUpon>201810020728227_Test.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810020933387_AddDescriptionTournament.cs" />
+    <Compile Include="Migrations\201810020933387_AddDescriptionTournament.Designer.cs">
+      <DependentUpon>201810020933387_AddDescriptionTournament.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Administrator.cs" />
     <Compile Include="Models\BaseModel.cs" />
@@ -217,6 +221,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810020728227_Test.resx">
       <DependentUpon>201810020728227_Test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810020933387_AddDescriptionTournament.resx">
+      <DependentUpon>201810020933387_AddDescriptionTournament.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

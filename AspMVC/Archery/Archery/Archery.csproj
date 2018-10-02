@@ -113,6 +113,11 @@
     <Content Include="Areas\BackOffice\Views\_ViewStart.cshtml" />
     <Content Include="Areas\BackOffice\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\BackOffice\Views\Dashboard\Index.cshtml" />
+    <Content Include="Areas\BackOffice\Views\Weapons\Create.cshtml" />
+    <Content Include="Areas\BackOffice\Views\Weapons\Delete.cshtml" />
+    <Content Include="Areas\BackOffice\Views\Weapons\Details.cshtml" />
+    <Content Include="Areas\BackOffice\Views\Weapons\Edit.cshtml" />
+    <Content Include="Areas\BackOffice\Views\Weapons\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -133,6 +138,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\BackOffice\BackOfficeAreaRegistration.cs" />
     <Compile Include="Areas\BackOffice\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\BackOffice\Controllers\WeaponsController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ArchersController.cs" />
@@ -151,6 +157,10 @@
     <Compile Include="Migrations\201810011458048_AddShooterTournamentWeapon.cs" />
     <Compile Include="Migrations\201810011458048_AddShooterTournamentWeapon.Designer.cs">
       <DependentUpon>201810011458048_AddShooterTournamentWeapon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810020728227_Test.cs" />
+    <Compile Include="Migrations\201810020728227_Test.Designer.cs">
+      <DependentUpon>201810020728227_Test.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Administrator.cs" />
@@ -198,6 +208,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810011458048_AddShooterTournamentWeapon.resx">
       <DependentUpon>201810011458048_AddShooterTournamentWeapon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810020728227_Test.resx">
+      <DependentUpon>201810020728227_Test.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

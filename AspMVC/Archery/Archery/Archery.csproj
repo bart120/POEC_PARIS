@@ -118,6 +118,11 @@
     <Content Include="Areas\BackOffice\Views\Weapons\Details.cshtml" />
     <Content Include="Areas\BackOffice\Views\Weapons\Edit.cshtml" />
     <Content Include="Areas\BackOffice\Views\Weapons\Index.cshtml" />
+    <Content Include="Areas\BackOffice\Views\Tournaments\Create.cshtml" />
+    <Content Include="Areas\BackOffice\Views\Tournaments\Delete.cshtml" />
+    <Content Include="Areas\BackOffice\Views\Tournaments\Details.cshtml" />
+    <Content Include="Areas\BackOffice\Views\Tournaments\Edit.cshtml" />
+    <Content Include="Areas\BackOffice\Views\Tournaments\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -138,6 +143,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\BackOffice\BackOfficeAreaRegistration.cs" />
     <Compile Include="Areas\BackOffice\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\BackOffice\Controllers\TournamentsController.cs" />
     <Compile Include="Areas\BackOffice\Controllers\WeaponsController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />

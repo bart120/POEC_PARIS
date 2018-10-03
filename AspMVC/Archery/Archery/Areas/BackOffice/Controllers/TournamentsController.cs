@@ -97,12 +97,11 @@ namespace Archery.Areas.BackOffice.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,Name,Location,StartDate,EndDate,ArcherCount,Price,Description")] Tournament tournament, int[] weaponsID)
         {
+            db.Entry(tournament).State = EntityState.Modified;
+            db.Tournaments.Include("Weapons").SingleOrDefault(x => x.ID == tournament.ID);
+
             if (ModelState.IsValid)
             {
-                db.Entry(tournament).State = EntityState.Modified;
-
-                db.Tournaments.Include("Weapons").SingleOrDefault(x => x.ID == tournament.ID);
-
                 if (weaponsID != null)
                     tournament.Weapons = db.Weapons.Where(x => weaponsID.Contains(x.ID)).ToList();
                 else
@@ -111,8 +110,8 @@ namespace Archery.Areas.BackOffice.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            MultiSelectList weaponsValues = new MultiSelectList(db.Weapons, "ID", "Name");
+            
+            MultiSelectList weaponsValues = new MultiSelectList(db.Weapons, "ID", "Name", tournament.Weapons.Select(x => x.ID));
             ViewBag.Weapons = weaponsValues;
             return View(tournament);
         }
@@ -137,8 +136,20 @@ namespace Archery.Areas.BackOffice.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Tournament tournament = db.Tournaments.Find(id);
+            Tournament tournament = db.Tournaments
+                .Include("Weapons").SingleOrDefault(x => x.ID == id);
+            tournament.Weapons.Clear();
+
+            var shooters = db.Shooters.Where(x => x.TournamentID == id);
+            foreach (var item in shooters)
+            {
+                db.Entry(item).State = EntityState.Deleted;
+                //db.Shooters.Remove(item);
+            }
+
+            //db.Entry(tournament).State = EntityState.Deleted;
             db.Tournaments.Remove(tournament);
+
             db.SaveChanges();
             return RedirectToAction("Index");
         }

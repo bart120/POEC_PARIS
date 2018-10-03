@@ -58,8 +58,8 @@ namespace Archery.Areas.BackOffice.Controllers
                 {
                     tournament.Weapons.Add(db.Weapons.Find(item));
                 }*/
-
-                tournament.Weapons = db.Weapons.Where(x => WeaponsID.Contains(x.ID)).ToList();
+                if(WeaponsID.Count() > 0)
+                    tournament.Weapons = db.Weapons.Where(x => WeaponsID.Contains(x.ID)).ToList();
                 
                 db.Tournaments.Add(tournament);
 
@@ -79,11 +79,14 @@ namespace Archery.Areas.BackOffice.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Tournament tournament = db.Tournaments.Find(id);
+            Tournament tournament = db.Tournaments.Include("Weapons").SingleOrDefault(x => x.ID == id);
             if (tournament == null)
             {
                 return HttpNotFound();
             }
+
+            MultiSelectList weaponsValues = new MultiSelectList(db.Weapons, "ID", "Name", tournament.Weapons.Select(x => x.ID));
+            ViewBag.Weapons = weaponsValues;
             return View(tournament);
         }
 
@@ -92,14 +95,25 @@ namespace Archery.Areas.BackOffice.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,Location,StartDate,EndDate,ArcherCount,Price,Description")] Tournament tournament)
+        public ActionResult Edit([Bind(Include = "ID,Name,Location,StartDate,EndDate,ArcherCount,Price,Description")] Tournament tournament, int[] weaponsID)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(tournament).State = EntityState.Modified;
+
+                db.Tournaments.Include("Weapons").SingleOrDefault(x => x.ID == tournament.ID);
+
+                if (weaponsID != null)
+                    tournament.Weapons = db.Weapons.Where(x => weaponsID.Contains(x.ID)).ToList();
+                else
+                    tournament.Weapons.Clear();
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
+            MultiSelectList weaponsValues = new MultiSelectList(db.Weapons, "ID", "Name");
+            ViewBag.Weapons = weaponsValues;
             return View(tournament);
         }
 

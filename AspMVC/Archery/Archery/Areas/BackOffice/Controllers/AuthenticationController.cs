@@ -34,7 +34,7 @@ namespace Archery.Areas.BackOffice.Controllers
                 }
                 else
                 {
-
+                    Session["ADMINISTRATOR"] = admin;
                     return RedirectToAction("Index", "Dashboard", new { area = "backoffice" });
                 }
 

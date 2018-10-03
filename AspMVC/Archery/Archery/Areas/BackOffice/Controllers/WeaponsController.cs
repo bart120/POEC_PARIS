@@ -7,10 +7,12 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Archery.Data;
+using Archery.Filters;
 using Archery.Models;
 
 namespace Archery.Areas.BackOffice.Controllers
 {
+    [Authentication]
     public class WeaponsController : Controller
     {
         private ArcheryDbContext db = new ArcheryDbContext();

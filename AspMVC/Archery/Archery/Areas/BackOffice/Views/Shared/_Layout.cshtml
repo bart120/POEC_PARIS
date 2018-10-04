@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var admin = Session["ADMINISTRATOR"] as Archery.Models.Administrator;
+}
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -39,11 +43,23 @@
                         </ul>
                     </li>
                 </ul>
+
+                <ul class="nav navbar-nav navbar-right" style="color:#ffffff">
+                    <li>
+                        <p>Bonjour @admin.FirstName @admin.LastName</p>
+
+                    </li>
+                    <li>
+                        <a id="logout" href="@Url.Action("Logout", "authentication")"><i class="glyphicon glyphicon-log-out"></i></a>
+                    </li>
+                </ul>
             </div>
         </div>
+
     </div>
 
-    <div class="container body-content">
+
+    <div class="container body-content" style="margin-top:50px;">
         @RenderBody()
         <hr />
         <footer>
@@ -55,7 +71,24 @@
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/jquery.validate.globalize.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-    
+
     @RenderSection("SectionScripts", false)
+    <script>
+        const btn = document.querySelector('#logout');
+        btn.addEventListener('click', ev => {
+            if (confirm("Voulez-vous vous déconnecter?") == false) {
+                ev.preventDefault();
+            }
+        });
+
+        /*$(function () {
+            $("#logout").click(function () {
+                if (confirm("Voulez-vous vous déconnecter?") == false)
+                {
+                    return false;
+                }
+            });
+        });*/
+    </script>
 </body>
 </html>

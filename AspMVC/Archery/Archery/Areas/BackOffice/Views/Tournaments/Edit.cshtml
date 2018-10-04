@@ -1,4 +1,5 @@
 ﻿@model Archery.Models.Tournament
+@using Archery.Helpers;
 
 @{
     ViewBag.Title = "Edit";
@@ -109,7 +110,8 @@
                 foreach (var picture in Model.Pictures)
                 {
                     <div class="col-md-3">
-                        <img src="data:@picture.ContentType;base64,@Convert.ToBase64String(picture.Content)" class="img-thumbnail"/>
+                        @*@<img src="data:@picture.ContentType;base64,@Convert.ToBase64String(picture.Content)" class="img-thumbnail"/>*@
+                        @Html.PictureTournament(picture, "img-thumbnail")
                     </div>
                 }
             }

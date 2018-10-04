@@ -1,12 +1,15 @@
 ﻿@model Archery.Models.HomeIndexViewModel
-
+@using Archery.Helpers;
 
 <div class="row">
     @foreach (var item in Model.Tournaments)
     {
     <div class="col-sm-6 col-md-4">
         <div class="thumbnail">
-            <img src="..." alt="...">
+            @if (item.Pictures?.Count() > 0)
+            {
+                @Html.PictureTournament(item.Pictures.First(), "img-circle")
+            }
             <div class="caption">
                 <h3>@item.Name</h3>
                 <p>@item.Location</p>

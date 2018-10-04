@@ -110,6 +110,7 @@
                 foreach (var picture in Model.Pictures)
                 {
                     <div class="col-md-3">
+                        <p>@picture.Name <a href=""><i class="glyphicon glyphicon-trash"></i></a></p>
                         @*@<img src="data:@picture.ContentType;base64,@Convert.ToBase64String(picture.Content)" class="img-thumbnail"/>*@
                         @Html.PictureTournament(picture, "img-thumbnail")
                     </div>

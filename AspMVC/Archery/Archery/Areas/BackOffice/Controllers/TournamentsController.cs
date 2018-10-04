@@ -82,7 +82,7 @@ namespace Archery.Areas.BackOffice.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Tournament tournament = db.Tournaments.Include("Weapons").SingleOrDefault(x => x.ID == id);
+            Tournament tournament = db.Tournaments.Include("Pictures").Include("Weapons").SingleOrDefault(x => x.ID == id);
             if (tournament == null)
             {
                 return HttpNotFound();
@@ -101,7 +101,7 @@ namespace Archery.Areas.BackOffice.Controllers
         public ActionResult Edit([Bind(Include = "ID,Name,Location,StartDate,EndDate,ArcherCount,Price,Description")] Tournament tournament, int[] weaponsID)
         {
             db.Entry(tournament).State = EntityState.Modified;
-            db.Tournaments.Include("Weapons").SingleOrDefault(x => x.ID == tournament.ID);
+            db.Tournaments.Include("Pictures").Include("Weapons").SingleOrDefault(x => x.ID == tournament.ID);
 
             if (ModelState.IsValid)
             {

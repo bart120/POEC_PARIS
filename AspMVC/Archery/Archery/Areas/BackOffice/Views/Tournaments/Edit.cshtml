@@ -103,6 +103,18 @@
             </div>
             <button type="submit" class="btn btn-info">Enregistrer</button>
         </form>
+        <div class="row">
+            @if(Model.Pictures != null)
+            {
+                foreach (var picture in Model.Pictures)
+                {
+                    <div class="col-md-3">
+                        <img src="data:@picture.ContentType;base64,@Convert.ToBase64String(picture.Content)" class="img-thumbnail"/>
+                    </div>
+                }
+            }
+
+        </div>
     </div>
 </div>
 

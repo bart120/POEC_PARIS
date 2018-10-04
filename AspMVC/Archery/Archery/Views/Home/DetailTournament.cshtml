@@ -1,0 +1,37 @@
+﻿@model Archery.Models.Tournament
+@using Archery.Helpers;
+
+@{
+    ViewBag.Title = "Tournoi " + Model.Name;
+}
+
+<div class="jumbotron">
+    <h1>@Model.Name</h1>
+    <p>@Html.Raw(Model.Description)</p>
+    <p>@Model.Price €</p>
+    <p>@Model.Location</p>
+    <div class="row">
+        <div class="col-md-6">
+            <p>Armes autorisées <span class="badge">@Model.Weapons.Count()</span></p>
+            <ul class="list-group">
+                @foreach (var item in Model.Weapons)
+                {
+                    <li class="list-group-item">@item.Name</li>
+                }
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                @foreach (var picture in Model.Pictures)
+                {
+                    <div class="col-xs-6 col-md-3 thumbnail">
+                        @Html.PictureTournament(picture)
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <p><a class="btn btn-primary btn-lg" href="#" role="button">S'inscrire</a></p>
+</div>
+

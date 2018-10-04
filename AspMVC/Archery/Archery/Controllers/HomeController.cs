@@ -34,5 +34,17 @@ namespace Archery.Controllers
             return View(modelInfo);
         }
 
+        public ActionResult DetailTournament(int? id)
+        {
+            if (id == null)
+                return HttpNotFound();
+            var model = db.Tournaments.Include("Weapons")
+                                             .Include("Pictures")
+                                             .SingleOrDefault(x => x.ID == id);
+            if(model == null)
+                return HttpNotFound();
+            return View(model);
+        }
+
     }
 }

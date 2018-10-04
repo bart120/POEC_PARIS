@@ -416,6 +416,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Administrator.cs" />
     <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\HomeViewModels.cs" />
     <Compile Include="Models\Info.cs" />
     <Compile Include="Models\Archer.cs" />
     <Compile Include="Models\Shooter.cs" />

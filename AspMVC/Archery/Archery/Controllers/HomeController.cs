@@ -13,7 +13,11 @@ namespace Archery.Controllers
         public ActionResult Index()
         {
             ViewData["Title"] = "Accueil";
-            return View();
+            HomeIndexViewModel model = new HomeIndexViewModel();
+            model.Tournaments = db.Tournaments.Where(x => x.StartDate >= DateTime.Now)
+                                              .OrderBy(x => x.StartDate)
+                                              .Take(20);
+            return View(model);
         }
 
         //[Route("a-propos")]

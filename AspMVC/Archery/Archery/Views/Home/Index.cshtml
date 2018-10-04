@@ -1,4 +1,21 @@
-﻿
+﻿@model Archery.Models.HomeIndexViewModel
 
 
-<h1>Bonjour</h1>
+<div class="row">
+    @foreach (var item in Model.Tournaments)
+    {
+
+
+    <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+            <img src="..." alt="...">
+            <div class="caption">
+                <h3>@item.Name</h3>
+                <p>@item.Location</p>
+                <p>@item.StartDate.ToString("ddd dd MMM yyyy ")</p>
+                <p><a href="#" class="btn btn-primary" role="button">S'inscrire</a></p>
+            </div>
+        </div>
+    </div>
+    }
+</div>

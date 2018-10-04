@@ -413,6 +413,10 @@
     <Compile Include="Migrations\201810020933387_AddDescriptionTournament.Designer.cs">
       <DependentUpon>201810020933387_AddDescriptionTournament.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810041018349_AddTournamentPictures.cs" />
+    <Compile Include="Migrations\201810041018349_AddTournamentPictures.Designer.cs">
+      <DependentUpon>201810041018349_AddTournamentPictures.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Administrator.cs" />
     <Compile Include="Models\BaseModel.cs" />
@@ -421,6 +425,7 @@
     <Compile Include="Models\Archer.cs" />
     <Compile Include="Models\Shooter.cs" />
     <Compile Include="Models\Tournament.cs" />
+    <Compile Include="Models\TournamentPicture.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Weapon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -473,6 +478,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810020933387_AddDescriptionTournament.resx">
       <DependentUpon>201810020933387_AddDescriptionTournament.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810041018349_AddTournamentPictures.resx">
+      <DependentUpon>201810041018349_AddTournamentPictures.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

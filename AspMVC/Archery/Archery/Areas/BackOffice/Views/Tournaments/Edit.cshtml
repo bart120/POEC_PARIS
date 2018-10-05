@@ -109,8 +109,8 @@
             {
                 foreach (var picture in Model.Pictures)
                 {
-                    <div class="col-md-3">
-                        <p>@picture.Name <a href=""><i class="glyphicon glyphicon-trash"></i></a></p>
+                    <div class="col-md-3" id="div-@picture.ID">
+                        <p>@picture.Name <a href="#" class="delete" data-id="@picture.ID"><i class="glyphicon glyphicon-trash"></i></a></p>
                         @*@<img src="data:@picture.ContentType;base64,@Convert.ToBase64String(picture.Content)" class="img-thumbnail"/>*@
                         @Html.PictureTournament(picture, "img-thumbnail")
                     </div>
@@ -145,6 +145,22 @@
             });
 
             tinymce.init({ selector: '#Description' });
+
+
+            $('a.delete').click(function () {
+                var idPicture = $(this).data("id");
+                //alert(idPicture);
+                $.ajax({
+                    url: '@Url.Action("deletePicture", "Tournaments")',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: { id: idPicture },
+                    success: function (obj) {
+                        alert("l'image " + obj.Name + " a été supprimée.");
+                        $("#div-" + idPicture).fadeOut();
+                    }
+                });
+            });
         });
     </script>
 }

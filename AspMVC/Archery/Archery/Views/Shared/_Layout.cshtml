@@ -1,4 +1,6 @@
-﻿
+﻿@{
+    var archer = Session["ARCHER"] as Archery.Models.Archer;
+}
 <!DOCTYPE html>
 
 <html>
@@ -30,7 +32,7 @@
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">                    
+                <ul class="nav navbar-nav">
                     <li>
                         @*<a href="~/a-propos">A propos</a>*@
                         @*@Html.ActionLink("A propos", "about", "home")*@
@@ -49,9 +51,29 @@
                         </ul>
                     </li>
                 </ul>
-                
+
+                @if (archer == null)
+                {
+                    <form class="navbar-form navbar-right" method="post" action="@Url.Action("login", "archers")">
+                        <div class="form-group">
+                            <input type="text" name="mail" class="form-control" placeholder="Login">
+                            <input type="password" name="password" class="form-control" placeholder="Mot de passe" />
+                        </div>
+                        <button type="submit" class="btn btn-info">OK</button>
+                    </form>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="@Url.Action("subscribe", "archers")">Inscription</a></li>
+                    </ul>
+                }
+                else
+                {
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>Bonjour @archer.FirstName</li>
+                        <li><a href="@Url.Action("logout", "archers")"><i class="glyphicon glyphicon-log-out"></i></a></li>
+                    </ul>
+                }
+
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="@Url.Action("subscribe", "archers")">Inscription</a></li>
                     <li><a href="@Url.Action("index", "dashboard", new { area="backoffice" })">BO</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
@@ -74,6 +96,6 @@
     <script src="~/Scripts/jquery-1.9.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     @RenderSection("SectionScripts", false)
-    
+
 </body>
 </html>

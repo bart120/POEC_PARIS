@@ -23,7 +23,7 @@
                     }
                 </ul>
                 }*@
-                <p><a href="@Url.RouteUrl("DetailsTournament", new { id=item.ID, name = item.Name })" class="btn btn-primary" role="button">Voir les détails</a> <a href="#" class="btn btn-primary" role="button">S'inscrire</a></p>
+                <p><a href="@Url.RouteUrl("DetailsTournament", new { id=item.ID, name = item.Name })" class="btn btn-primary" role="button">Voir les détails</a> <a href="@Url.Action("SubscribeTournament", "archers", new { tournamentId = item.ID })" class="btn btn-primary" role="button">S'inscrire</a></p>
             </div>
         </div>
     </div>

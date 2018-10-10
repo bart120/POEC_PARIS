@@ -12,6 +12,7 @@ namespace Archery.Filters
         public string Type { get; set; } = "BO";
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
+            
             if(Type == "ARCHER")
             {
                 if (filterContext.HttpContext.Session["ARCHER"] == null)

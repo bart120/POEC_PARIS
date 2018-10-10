@@ -58,7 +58,23 @@ namespace Archery.Controllers
         {
             if (tournamentId == null)
                 return HttpNotFound();
+            ViewBag.Tournament = db.Tournaments.Find(tournamentId);
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authentication(Type = "ARCHER")]
+        public ActionResult SubscribeTournament(Shooter model)
+        {
+            model.ArcherID = ((Archer)Session["ARCHER"]).ID;
+            if (ModelState.IsValid)
+            {
+                db.Shooters.Add(model);
+                db.SaveChanges();
+            }
+            ViewBag.Tournament = db.Tournaments.Find(model.TournamentID);
+            return View(model);
         }
 
         public ActionResult Login()
@@ -87,6 +103,7 @@ namespace Archery.Controllers
 
         }
 
+        [Authentication(Type = "ARCHER")]
         public ActionResult Logout()
         {
             Session.Remove("ARCHER");

@@ -458,6 +458,7 @@
     <Content Include="Views\Home\DetailTournament.cshtml" />
     <Content Include="Views\Archers\Login.cshtml" />
     <Content Include="Views\Archers\SubscribeTournament.cshtml" />
+    <Content Include="Views\Archers\View.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

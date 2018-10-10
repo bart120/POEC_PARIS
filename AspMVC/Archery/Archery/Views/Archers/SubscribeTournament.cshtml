@@ -1,7 +1,58 @@
-﻿
+﻿@model Archery.Models.Shooter
 @{
+    Layout = "~/Views/Shared/_LayoutForm.cshtml";
     ViewBag.Title = "SubscribeTournament";
+    var tournament = ViewBag.Tournament as Archery.Models.Tournament;
 }
 
-<h2>SubscribeTournament</h2>
+@section SectionTitle{
+    Inscription au tournoi @tournament.Name
+}
 
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="TournamentID" value="@tournament.ID" />
+    <div class="form-horizontal">
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.WeaponID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.WeaponID, ViewBag.Weapons, new { @class = "form-control" } )
+                @Html.ValidationMessageFor(model => model.WeaponID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Departure, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Departure, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Departure, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="OK" class="btn btn-info" />
+            </div>
+        </div>
+    </div>
+}
+
+@section SectionScripts{
+    <script src="~/Scripts/jquery.datetimepicker.js"></script>
+
+    <script>
+        $(function () {
+            $('#Departure').datetimepicker({
+                lang: 'fr',
+                step: 15,
+                format: 'H:i'
+            });
+            
+
+            tinymce.init({ selector: '#Description'});
+        });
+    </script>
+}
